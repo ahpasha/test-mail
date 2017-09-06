@@ -8,7 +8,7 @@ const RefillList = (props) => (
   <ul styleName='refill-list'>
     {props.refills.map(childData => (
       <li styleName='refill-list__item'>
-        <RefillCard {...childData}/>
+        <RefillCard {...childData} onRemove={props.transactionsActions.removeTransaction}/>
       </li>
     ))}
   </ul>

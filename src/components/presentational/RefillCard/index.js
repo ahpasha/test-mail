@@ -1,20 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './styles.styl';
 import PropTypes from 'prop-types';
 import Button from '../Button'
 
-console.log(styles);
-const RefillCard = props => (
-  <div styleName='refill-card'>
-    <div styleName='refill-card__item'>
-      <Button onClickHandler="">Удалить</Button>
-      <Button onClickHandler="">редактировать</Button>
-    </div>
-    <div styleName='refill-card__item'>{props.number}</div>
-    <div styleName='refill-card__item'>{props.sum}</div>
-  </div>
-);
+class RefillCard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.removeCard = this.removeCard.bind(this);
+  }
+  removeCard() {
+    this.props.onRemove(this.props.id)
+  }
+  render() {
+    return (
+      <div styleName='refill-card'>
+        <div styleName='refill-card__item'>
+          <Button onClickHandler={this.removeCard}>Удалить</Button>
+          <Button onClickHandler="">редактировать</Button>
+        </div>
+        <div styleName='refill-card__item'>{this.props.num}</div>
+        <div styleName='refill-card__item'>{this.props.sum}</div>
+      </div>
+    )
+  }
+}
 
 RefillCard.propTypes = {
   number: PropTypes.number.isRequired,

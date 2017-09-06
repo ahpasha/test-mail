@@ -4,7 +4,7 @@ import styles from './stylus.styl';
 import PropTypes from 'prop-types';
 
 const Button = props => (
-  <div styleName='button'>{props.children}</div>
+  <div styleName='button' onClick={props.onClickHandler}>{props.children}</div>
 );
 
 Button.propTypes = {
