@@ -61,20 +61,22 @@ class PopUp extends Component {
     }
     this.props.popUpActions.closePopup();
   }
-
   onInputsChange() {
     let num = this.phoneInput.getNumber();
     let sum = this.inputSum.inputDOM.value;
     this.props.popUpActions.validatePopup(validatePopupInput({num, sum}))
   }
-
+  pasteHandler(event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
   render() {
     return (
       <div>
         {this.props.isOpened && (
           <div>
             <PhoneNumber ref={(phoneInput) => this.phoneInput = phoneInput}  phoneNumber={this.props.phoneNumber} onChange={this.onInputsChange}/>
-            <Input ref={inputSum => this.inputSum = inputSum} maxLength={4} additionalKeyPress={this.setMaxValue} additionalKeyUp={this.changeDeclension} placeholder={0} defaultValue={this.props.paySum}/>
+            <Input ref={inputSum => this.inputSum = inputSum} maxLength={4} additionalKeyPress={this.setMaxValue} additionalKeyUp={this.changeDeclension} placeholder={0} defaultValue={this.props.paySum} additionalPaste={this.pasteHandler}/>
             <div>{this.state.name}</div>
             <Button onClickHandler={this.addOrEditTransactions} inactive={!this.props.isValid}>продолжить</Button>
           </div>
