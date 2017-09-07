@@ -3,7 +3,8 @@ const initialState = {
   isOpened: false,
   data: {
     phoneNumber: '',
-    paySum: ''
+    paySum: '',
+    id: ''
   }
 }
 
@@ -12,7 +13,7 @@ export default function popup(state = initialState, action) {
     case 'OPEN_POPUP':
       return { ...state, ...{data: action.payload, isOpened: true} };
     case 'CLOSE_POPUP':
-      return { ...state, ...{isOpened: false, data: {phoneNumber: null, paySum: null}} };
+      return { ...state, ...{isOpened: false, data: {id: '', phoneNumber: '', paySum: ''}} };
     default:
       return state;
   } }

@@ -4,3 +4,9 @@ export function openPopup(data) {
     payload: data
   }
 }
+
+export function closePopup(data) {
+  return {
+    type: 'OPEN_POPUP'
+  }
+}

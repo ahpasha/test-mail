@@ -6,7 +6,7 @@ export default function historyList(state = initialState, action) {
   let newList;
   switch (action.type) {
     case 'ADD_TRANSACTION':
-      newList = state.refills.push(action.payload);
+      newList = state.refills.concat(action.payload);
       return { ...state, ...{refills: newList}
       };
 

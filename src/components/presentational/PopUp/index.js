@@ -5,7 +5,7 @@ import PhoneNumber from '../PhoneNumber'
 import Input from '../Input'
 import { rubDeclension } from '../../../services/validation-input'
 import Button from '../Button';
-import guid from '../../../services/validation-input'
+import { guid } from '../../../services/validation-input'
 
 class PopUp extends Component {
   constructor(props) {
@@ -37,10 +37,12 @@ class PopUp extends Component {
 
     if (id) {
       this.props.listActions.editTransaction({id, num, sum})
-    } else
-      console.log('else')
-      //id = guid();
-     // this.props.listActions.addTransaction({id, num, sum})
+    } else {
+      id = guid();
+      this.props.listActions.addTransaction({id, num, sum})
+    }
+    //this.props.popUpActions.closePopup();
+
   }
 
   render() {
