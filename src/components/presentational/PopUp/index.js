@@ -18,6 +18,19 @@ class PopUp extends Component {
     this.setMaxValue = this.setMaxValue.bind(this);
     this.changeDeclension = this.changeDeclension.bind(this);
     this.addOrEditTransactions = this.addOrEditTransactions.bind(this);
+    this.globalCloseHandler = this.globalCloseHandler.bind(this);
+  }
+  globalCloseHandler(event) {
+    let key = event.keyCode || event.which;
+    if (key === 27) {
+      this.props.popUpActions.closePopup();
+    }
+  }
+  componentDidMount() {
+    document.addEventListener('keyup', this.globalCloseHandler)
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keyup', this.globalCloseHandler)
   }
   setMaxValue(event) {
     if (event.target.value.length === 4 ) {
@@ -41,8 +54,7 @@ class PopUp extends Component {
       id = guid();
       this.props.listActions.addTransaction({id, num, sum})
     }
-    //this.props.popUpActions.closePopup();
-
+    this.props.popUpActions.closePopup();
   }
 
   render() {

@@ -5,8 +5,8 @@ export function openPopup(data) {
   }
 }
 
-export function closePopup(data) {
+export function closePopup() {
   return {
-    type: 'OPEN_POPUP'
+    type: 'CLOSE_POPUP'
   }
 }
