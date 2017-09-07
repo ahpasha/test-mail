@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './styles.styl';
 import RefillCard from '../RefillCard'
-import PropTypes from 'prop-types';
 import Button from '../Button';
 
 class RefillList extends Component {
@@ -37,9 +36,5 @@ class RefillList extends Component {
     )
   }
 }
-
-RefillList.propTypes = {
-  refills: PropTypes.array
-};
 
 export default CSSModules(RefillList, styles);
