@@ -23,9 +23,13 @@ class RefillCard extends Component {
   render() {
     return (
       <div styleName='refill-card'>
-        <div styleName='refill-card__item'>
-          <Button onClickHandler={this.removeCard}>Удалить</Button>
-          <Button onClickHandler={this.editCard}>редактировать</Button>
+        <div styleName='refill-card__controls'>
+          <div styleName='refill-card__button'>
+            <Button onClickHandler={this.removeCard}>Удалить</Button>
+          </div>
+          <div styleName='refill-card__button'>
+            <Button onClickHandler={this.editCard}>редактировать</Button>
+          </div>
         </div>
         <div styleName='refill-card__item'>{this.props.num}</div>
         <div styleName='refill-card__item'>{this.props.sum}</div>

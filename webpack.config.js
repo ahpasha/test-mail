@@ -20,15 +20,6 @@ module.exports = {
     new NpmInstallPlugin()
   ],
   module: {
-    // preLoaders: [
-    //   {
-    //     test: /\.js$/,
-    //     loaders: ['eslint'],
-    //     include: [
-    //       path.resolve(__dirname, "src"),
-    //     ],
-    //   }
-    // ],
     loaders: [
       {
         loaders: ['react-hot', 'babel-loader'],

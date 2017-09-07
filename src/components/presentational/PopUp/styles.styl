@@ -1,0 +1,73 @@
+placeholder()
+  &::-webkit-input-placeholder
+    {block}
+  &:-moz-placeholder
+    {block}
+  &::-moz-placeholder
+    {block}
+  &:-ms-input-placeholder
+    {block}
+
+.popup
+  background-color #00bd97
+  width 500px
+  padding 20px 40px
+  display flex
+  flex-wrap wrap
+
+  &__item-name
+    font 15px/15px 'Roboto', sans-serif
+    padding-bottom 5px
+    display block
+    color #ffffff
+
+  &__top-line
+    display flex
+    justify-content space-between
+
+  &__phone
+    flex-grow 1
+    padding-right 40px
+
+  &__sum
+    display flex
+    justify-content flex-end
+    align-items center
+
+  &__sum-declension
+    font 20px/30px 'Roboto', sans-serif
+    color #ffffff
+    padding-left 10px
+
+  &__button
+    padding-top 30px
+    display flex
+    justify-content center
+    width 100%
+
+
+placeholder()
+  &::-webkit-input-placeholder
+    {block}
+  &:-moz-placeholder
+    {block}
+  &::-moz-placeholder
+    {block}
+  &:-ms-input-placeholder
+    {block}
+
+.number-input
+  display block
+  border 0
+  font 30px/30px 'Roboto', sans-serif
+  background-color transparent
+  color: #ffffff
+  text-align right
+  width 85px
+  padding 0
+
+  +placeholder()
+    color: #8adfce
+
+  &:focus
+    outline none

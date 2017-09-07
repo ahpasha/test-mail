@@ -32,7 +32,7 @@ class RefillList extends Component {
             </li>
           ))}
         </ul>
-        <Button onClickHandler={this.addNewHandler}>добавить</Button>
+        <Button styles={styles} onClickHandler={this.addNewHandler}>добавить</Button>
       </div>
     )
   }

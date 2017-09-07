@@ -1,9 +1,25 @@
 .refill-list
   list-style-type none
   width 800px
+  padding 0
+  margin 0
 
   &__item
-    padding-bottom 3px
+    margin-bottom 3px
+    background-color #bcf4bd
+
+    &:nth-child(even)
+      background-color #8be0af
 
     &:last-child
       border-bottom 0
+
+
+.button
+  margin-top 20px
+  display inline-flex
+  padding 5px 10px
+  background-color #2a664b
+  font 12px/12px 'Roboto', sans-serif
+  color #ffffff
+  cursor pointer

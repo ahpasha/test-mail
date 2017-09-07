@@ -85,13 +85,21 @@ class PhoneNumber extends Component {
           +7
         </div>
         <div styleName='telephone__divider'>|</div>
-        <Input id={0} ref={(input) => this.inputs[0] = input} additionalKeyUp={this.additionalKeyUp} {...options[0]} defaultValue={this.numberArr[0]} additionalPaste={this.pasteHandler}/>
+        <div styleName='telephone__input'>
+          <Input id={0} ref={(input) => this.inputs[0] = input} additionalKeyUp={this.additionalKeyUp} {...options[0]} defaultValue={this.numberArr[0]} additionalPaste={this.pasteHandler}/>
+        </div>
         <div styleName='telephone__divider'>|</div>
-        <Input id={1} ref={(input) => this.inputs[1] = input} additionalKeyUp={this.additionalKeyUp} {...options[1]} defaultValue={this.numberArr[1]} additionalPaste={this.pasteHandler}/>
+        <div styleName='telephone__input'>
+          <Input id={1} ref={(input) => this.inputs[1] = input} additionalKeyUp={this.additionalKeyUp} {...options[1]} defaultValue={this.numberArr[1]} additionalPaste={this.pasteHandler}/>
+        </div>
         <div styleName='telephone__divider'>-</div>
-        <Input id={2} ref={(input) => this.inputs[2] = input} additionalKeyUp={this.additionalKeyUp} {...options[2]} defaultValue={this.numberArr[2]} additionalPaste={this.pasteHandler}/>
+        <div styleName='telephone__input-short'>
+          <Input id={2} ref={(input) => this.inputs[2] = input} additionalKeyUp={this.additionalKeyUp} {...options[2]} defaultValue={this.numberArr[2]} additionalPaste={this.pasteHandler}/>
+        </div>
         <div styleName='telephone__divider'>-</div>
-        <Input id={3} ref={(input) => this.inputs[3] = input}  additionalKeyUp={this.additionalKeyUp} additionalKeyDown={this.additionalKeyDown} {...options[3]} defaultValue={this.numberArr[3]} additionalPaste={this.pasteHandler}/>
+        <div styleName='telephone__input-short'>
+          <Input id={3} ref={(input) => this.inputs[3] = input}  additionalKeyUp={this.additionalKeyUp} additionalKeyDown={this.additionalKeyDown} {...options[3]} defaultValue={this.numberArr[3]} additionalPaste={this.pasteHandler}/>
+        </div>
       </div>
     )
   }

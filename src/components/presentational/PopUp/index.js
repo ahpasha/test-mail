@@ -74,11 +74,23 @@ class PopUp extends Component {
     return (
       <div>
         {this.props.isOpened && (
-          <div>
-            <PhoneNumber ref={(phoneInput) => this.phoneInput = phoneInput}  phoneNumber={this.props.phoneNumber} onChange={this.onInputsChange}/>
-            <Input ref={inputSum => this.inputSum = inputSum} maxLength={4} additionalKeyPress={this.setMaxValue} additionalKeyUp={this.changeDeclension} placeholder={0} defaultValue={this.props.paySum} additionalPaste={this.pasteHandler}/>
-            <div>{this.state.name}</div>
-            <Button onClickHandler={this.addOrEditTransactions} inactive={!this.props.isValid}>продолжить</Button>
+          <div styleName='popup'>
+            <div styleName='popup__top-line'>
+              <div styleName='popup__phone'>
+                <span styleName='popup__item-name'>Номер телефона</span>
+                <PhoneNumber ref={(phoneInput) => this.phoneInput = phoneInput}  phoneNumber={this.props.phoneNumber} onChange={this.onInputsChange}/>
+              </div>
+              <div>
+                <span styleName='popup__item-name'>Сумма пополнения</span>
+                <div styleName='popup__sum'>
+                  <Input styles={styles} ref={inputSum => this.inputSum = inputSum} maxLength={4} additionalKeyPress={this.setMaxValue} additionalKeyUp={this.changeDeclension} placeholder={0} defaultValue={this.props.paySum} additionalPaste={this.pasteHandler}/>
+                  <div styleName='popup__sum-declension'>{this.state.name}</div>
+                </div>
+              </div>
+            </div>
+              <div styleName='popup__button'>
+              <Button onClickHandler={this.addOrEditTransactions} inactive={!this.props.isValid}>Продолжить</Button>
+            </div>
           </div>
         )}
       </div>
@@ -86,4 +98,4 @@ class PopUp extends Component {
   }
 }
 
-export default PopUp
+export default CSSMobules(PopUp, styles)

@@ -33,9 +33,9 @@ class Input extends Component {
   }
   render() {
     return (
-      <input key={this.props.defaultValue} ref={(input => this.inputDOM = input)} onKeyPress={this.notAllowChars} onKeyUp={this.onKeyUp} defaultValue={this.props.defaultValue} onKeyDown={this.onKeyDown} placeholder={this.props.placeholder} onPaste={this.onPasteHandler}/>
+      <input styleName='number-input' key={this.props.defaultValue} ref={(input => this.inputDOM = input)} onKeyPress={this.notAllowChars} onKeyUp={this.onKeyUp} defaultValue={this.props.defaultValue} onKeyDown={this.onKeyDown} placeholder={this.props.placeholder} onPaste={this.onPasteHandler}/>
     )
   }
 }
 
-export default Input;
+export default CSSModules(Input, styles);

@@ -1,0 +1,24 @@
+placeholder()
+  &::-webkit-input-placeholder
+    {block}
+  &:-moz-placeholder
+    {block}
+  &::-moz-placeholder
+    {block}
+  &:-ms-input-placeholder
+    {block}
+
+.number-input
+  display block
+  border 0
+  font 30px/30px 'Roboto', sans-serif
+  background-color transparent
+  color: #ffffff
+  width 100%;
+  padding 0
+
+  +placeholder()
+    color: #8adfce
+
+  &:focus
+    outline none
