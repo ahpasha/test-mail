@@ -24,6 +24,8 @@ class PhoneNumber extends Component {
 
     this.additionalKeyUp = this.additionalKeyUp.bind(this);
     this.additionalKeyDown = this.additionalKeyDown.bind(this);
+    this.pasteHandler = this.pasteHandler.bind(this);
+    this.numberArr = this.props.phoneNumber ? this.generateNumber(this.props.phoneNumber) : [];
   }
   additionalKeyUp(event, id) {
     let inputValue = event.target.value;
@@ -61,21 +63,35 @@ class PhoneNumber extends Component {
 
     return number
   }
+  pasteHandler(event) {
+    let clipboardData;
+    let pastedData;
+
+    event.stopPropagation();
+    event.preventDefault();
+
+    clipboardData = event.clipboardData || window.clipboardData;
+    pastedData = clipboardData.getData('Text');
+
+    if (pastedData.length === 10 && !isNaN(Number(pastedData)))  {
+      this.numberArr = this.generateNumber(pastedData);
+      this.forceUpdate()
+    }
+  }
   render() {
-    let numberArr = this.props.phoneNumber ? this.generateNumber(this.props.phoneNumber) : [];
     return (
       <div styleName="telephone">
         <div styleName="telephone__code">
           +7
         </div>
         <div styleName='telephone__divider'>|</div>
-        <Input id={0} ref={(input) => this.inputs[0] = input} additionalKeyUp={this.additionalKeyUp} {...options[0]} defaultValue={numberArr[0]}/>
+        <Input id={0} ref={(input) => this.inputs[0] = input} additionalKeyUp={this.additionalKeyUp} {...options[0]} defaultValue={this.numberArr[0]} additionalPaste={this.pasteHandler}/>
         <div styleName='telephone__divider'>|</div>
-        <Input id={1} ref={(input) => this.inputs[1] = input} additionalKeyUp={this.additionalKeyUp} {...options[1]} defaultValue={numberArr[1]}/>
+        <Input id={1} ref={(input) => this.inputs[1] = input} additionalKeyUp={this.additionalKeyUp} {...options[1]} defaultValue={this.numberArr[1]} additionalPaste={this.pasteHandler}/>
         <div styleName='telephone__divider'>-</div>
-        <Input id={2} ref={(input) => this.inputs[2] = input} additionalKeyUp={this.additionalKeyUp} {...options[2]} defaultValue={numberArr[2]}/>
+        <Input id={2} ref={(input) => this.inputs[2] = input} additionalKeyUp={this.additionalKeyUp} {...options[2]} defaultValue={this.numberArr[2]} additionalPaste={this.pasteHandler}/>
         <div styleName='telephone__divider'>-</div>
-        <Input id={3} ref={(input) => this.inputs[3] = input}  additionalKeyUp={this.additionalKeyUp} additionalKeyDown={this.additionalKeyDown} {...options[3]} defaultValue={numberArr[3]}/>
+        <Input id={3} ref={(input) => this.inputs[3] = input}  additionalKeyUp={this.additionalKeyUp} additionalKeyDown={this.additionalKeyDown} {...options[3]} defaultValue={this.numberArr[3]} additionalPaste={this.pasteHandler}/>
       </div>
     )
   }

@@ -13,7 +13,7 @@ export default function popup(state = initialState, action) {
     case 'OPEN_POPUP':
       return { ...state, ...{data: action.payload, isOpened: true} };
     case 'CLOSE_POPUP':
-      return { ...state, ...{isOpened: false, data: {id: '', phoneNumber: '', paySum: ''}} };
+      return { ...state, ...{isOpened: false, isValid:false, data: {id: '', phoneNumber: '', paySum: ''}} };
     case 'VALIDATE_POPUP':
       return { ...state, ...{isValid: action.payload} };
     default:

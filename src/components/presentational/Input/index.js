@@ -10,6 +10,7 @@ class Input extends Component {
     this.notAllowChars = this.notAllowChars.bind(this);
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
+    this.onPasteHandler = this.onPasteHandler.bind(this);
   }
   notAllowChars(event) {
     if (!onlyNumbers(event) || this.inputDOM.value.length === this.props.maxLength) {
@@ -27,9 +28,12 @@ class Input extends Component {
   onKeyDown(event) {
     this.props.additionalKeyDown && this.props.additionalKeyDown(event)
   }
+  onPasteHandler(event) {
+    this.props.additionalPaste && this.props.additionalPaste(event)
+  }
   render() {
     return (
-      <input key={this.props.defaultValue} ref={(input => this.inputDOM = input)} onKeyPress={this.notAllowChars} onKeyUp={this.onKeyUp} defaultValue={this.props.defaultValue} onKeyDown={this.onKeyDown} placeholder={this.props.placeholder}/>
+      <input key={this.props.defaultValue} ref={(input => this.inputDOM = input)} onKeyPress={this.notAllowChars} onKeyUp={this.onKeyUp} defaultValue={this.props.defaultValue} onKeyDown={this.onKeyDown} placeholder={this.props.placeholder} onPaste={this.onPasteHandler}/>
     )
   }
 }
