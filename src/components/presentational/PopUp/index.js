@@ -7,11 +7,11 @@ import { rubDeclension } from '../../../services/validation-input'
 import Button from '../Button';
 
 class PopUp extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      name: rubDeclension(0)
+      name: rubDeclension(props.paySum)
     };
 
     this.setMaxValue = this.setMaxValue.bind(this);
@@ -28,6 +28,9 @@ class PopUp extends Component {
       name: rubDeclension(+ event.target.value)
     });
   }
+  shouldComponentUpdate(nextProps, prev) {
+    return true
+  }
 
   render() {
     return (
@@ -35,7 +38,7 @@ class PopUp extends Component {
         <PhoneNumber phoneNumber={this.props.phoneNumber}/>
         <Input maxLength={4} additionalKeyPress={this.setMaxValue} additionalKeyUp={this.changeDeclension} placeholder={0} defaultValue={this.props.paySum}/>
         <div>{this.state.name}</div>
-        <Button>продолжить</Button>
+        {/*<Button>продолжить</Button>*/}
       </div>
     )
   }

@@ -29,7 +29,7 @@ class Input extends Component {
   }
   render() {
     return (
-      <input ref={(input => this.inputDOM = input)} onKeyPress={this.notAllowChars} onKeyUp={this.onKeyUp} defaultValue={this.props.defaultValue} onKeyDown={this.onKeyDown} placeholder={this.props.placeholder}/>
+      <input key={this.props.defaultValue} ref={(input => this.inputDOM = input)} onKeyPress={this.notAllowChars} onKeyUp={this.onKeyUp} defaultValue={this.props.defaultValue} onKeyDown={this.onKeyDown} placeholder={this.props.placeholder}/>
     )
   }
 }

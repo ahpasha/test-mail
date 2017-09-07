@@ -9,16 +9,22 @@ class RefillCard extends Component {
     super(props);
 
     this.removeCard = this.removeCard.bind(this);
+    this.editCard = this.editCard.bind(this);
   }
   removeCard() {
     this.props.onRemove(this.props.id)
+  }
+  editCard() {
+    this.props.onEdit({phoneNumber: this.props.num,
+      paySum: this.props.sum
+    })
   }
   render() {
     return (
       <div styleName='refill-card'>
         <div styleName='refill-card__item'>
           <Button onClickHandler={this.removeCard}>Удалить</Button>
-          <Button onClickHandler="">редактировать</Button>
+          <Button onClickHandler={this.editCard}>редактировать</Button>
         </div>
         <div styleName='refill-card__item'>{this.props.num}</div>
         <div styleName='refill-card__item'>{this.props.sum}</div>

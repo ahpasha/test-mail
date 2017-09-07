@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import * as transactionsActions from '../../actions/TransectionsActions';
+import * as popupActions from '../../actions/popupActions';
 import RefillList from '../presentational/RefillList';
 
 class TransactionsList extends Component {
@@ -21,7 +22,8 @@ function MapStateToProps(state) {
 
 function MapDispatchToProps(dispatch) {
   return {
-    transactionsActions: bindActionCreators(transactionsActions, dispatch)
+    transactionsActions: bindActionCreators(transactionsActions, dispatch),
+    popupActions: bindActionCreators(popupActions, dispatch)
   }
 }
 
