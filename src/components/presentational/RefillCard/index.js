@@ -15,7 +15,8 @@ class RefillCard extends Component {
     this.props.onRemove(this.props.id)
   }
   editCard() {
-    this.props.onEdit({phoneNumber: this.props.num,
+    this.props.onEdit({id: this.props.id,
+      phoneNumber: this.props.num,
       paySum: this.props.sum
     })
   }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
-import * as pageActions from '../../actions/popupActions';
+import * as popupActions from '../../actions/popupActions';
+import * as listActions from '../../actions/TransectionsActions';
 import PopUp from '../presentational/PopUp';
 
 class PopupContainer extends Component {
@@ -14,17 +15,19 @@ class PopupContainer extends Component {
 
 function MapStateToProps(state) {
   return {
+    id: state.popup.data.id,
     phoneNumber: state.popup.data.phoneNumber,
     paySum: state.popup.data.paySum,
-    isOpened: state.popup.data.isOpened,
-    isValid: state.popup.data.isValid,
+    isOpened: state.popup.isOpened,
+    isValid: state.popup.isValid,
   }
 }
 
 
 function MapDispatchToProps(dispatch) {
   return {
-    popUpActions: bindActionCreators(pageActions, dispatch)
+    popUpActions: bindActionCreators(popupActions, dispatch),
+    listActions: bindActionCreators(listActions, dispatch)
   }
 }
 

@@ -42,20 +42,21 @@ class PhoneNumber extends Component {
     }
   }
   generateNumber(number) {
-    let arr = number.toString().split('');
-    let editedArr = arr.reduce((previous, num, index) => {
-      if (index < 3) {
-        previous[0] = previous[0] + num;
-      } else if (index < 6) {
-        previous[1] = previous[0] + num;
-      } else if (index < 8) {
-        previous[2] = previous[0] + num;
-      } else if (index < 10) {
-        previous[3] = previous[0] + num;
-      }
-      return previous
-    }, [ '', '', '', '' ]);
-    return editedArr
+    let str = number.toString();
+    let arr = []
+    arr.push(str.substr(0, 3));
+    arr.push(str.substr(3, 3));
+    arr.push(str.substr(6, 2));
+    arr.push(str.substr(8, 2));
+    return arr
+  }
+  getNumber() {
+    let number = '';
+    this.inputs.forEach((item) => {
+      number = number + item.inputDOM.value
+    });
+
+    return number
   }
   render() {
     let numberArr = this.props.phoneNumber ? this.generateNumber(this.props.phoneNumber) : [];
@@ -65,13 +66,13 @@ class PhoneNumber extends Component {
           +7
         </div>
         <div styleName='telephone__divider'>|</div>
-        <Input id={0} ref={(input) => this.inputs.push(input)} additionalKeyUp={this.additionalKeyUp} {...options[0]} defaultValue={numberArr[0]}/>
+        <Input id={0} ref={(input) => this.inputs[0] = input} additionalKeyUp={this.additionalKeyUp} {...options[0]} defaultValue={numberArr[0]}/>
         <div styleName='telephone__divider'>|</div>
-        <Input id={1} ref={(input) => this.inputs.push(input)} additionalKeyUp={this.additionalKeyUp} {...options[1]} defaultValue={numberArr[1]}/>
+        <Input id={1} ref={(input) => this.inputs[1] = input} additionalKeyUp={this.additionalKeyUp} {...options[1]} defaultValue={numberArr[1]}/>
         <div styleName='telephone__divider'>-</div>
-        <Input id={2} ref={(input) => this.inputs.push(input)} additionalKeyUp={this.additionalKeyUp} {...options[2]} defaultValue={numberArr[2]}/>
+        <Input id={2} ref={(input) => this.inputs[2] = input} additionalKeyUp={this.additionalKeyUp} {...options[2]} defaultValue={numberArr[2]}/>
         <div styleName='telephone__divider'>-</div>
-        <Input id={3} ref={(input) => this.inputs.push(input)}  additionalKeyUp={this.additionalKeyUp} additionalKeyDown={this.additionalKeyDown} {...options[3]} defaultValue={numberArr[3]}/>
+        <Input id={3} ref={(input) => this.inputs[3] = input}  additionalKeyUp={this.additionalKeyUp} additionalKeyDown={this.additionalKeyDown} {...options[3]} defaultValue={numberArr[3]}/>
       </div>
     )
   }
