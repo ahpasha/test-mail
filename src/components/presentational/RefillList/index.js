@@ -9,7 +9,6 @@ class RefillList extends Component {
   constructor(props) {
     super(props);
     this.addNewHandler = this.addNewHandler.bind(this);
-    this.onEditHandler = this.onEditHandler.bind(this);
   }
   addNewHandler() {
     this.props.popupActions.openPopup({
@@ -32,7 +31,8 @@ class RefillList extends Component {
             </li>
           ))}
         </ul>
-        <Button styles={styles} onClickHandler={this.addNewHandler}>добавить</Button>
+        <Button styles={styles} onClickHandler={this.addNewHandler}>Добавить</Button>
+        <Button styles={styles} onClickHandler={this.props.transactionsActions.clearTransactions}>Очистить</Button>
       </div>
     )
   }

@@ -24,7 +24,9 @@ export default function historyList(state = initialState, action) {
       });
       return { ...state, ...{refills: newList}
       };
-
+    case 'CLEAR_TRANSACTION' :
+      return { ...state, ...{refills: []}
+      };
     default:
       return state;
   }

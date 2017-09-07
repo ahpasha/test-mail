@@ -18,3 +18,9 @@ export function addTransaction(data) {
     payload: data
   }
 }
+
+export function clearTransactions() {
+  return {
+    type: 'CLEAR_TRANSACTION'
+  }
+}
