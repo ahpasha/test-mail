@@ -30,8 +30,10 @@ class PhoneNumber extends Component {
     let key = event.keyCode || event.which;
     if ((inputValue.length >= options[id].maxLength) && (id < options.length - 1) && (key !== 8)) {
       this.inputs[++id].focusOnElement();
+      this.inputs[id].selectionStart = this.inputs[id].inputDOM.setSelectionRange(this.inputs[id].inputDOM.value.length, this.inputs[id].inputDOM.value.length);
     } else if ((inputValue.length === 0) && (id !== 0) && (key === 8)) {
       this.inputs[--id].focusOnElement();
+      this.inputs[id].selectionStart = this.inputs[id].inputDOM.setSelectionRange(this.inputs[id].inputDOM.value.length, this.inputs[id].inputDOM.value.length);
     }
     this.props.onChange && this.props.onChange()
   }
@@ -44,7 +46,7 @@ class PhoneNumber extends Component {
   }
   generateNumber(number) {
     let str = number.toString();
-    let arr = []
+    let arr = [];
     arr.push(str.substr(0, 3));
     arr.push(str.substr(3, 3));
     arr.push(str.substr(6, 2));
