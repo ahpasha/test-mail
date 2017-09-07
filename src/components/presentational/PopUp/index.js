@@ -5,7 +5,7 @@ import PhoneNumber from '../PhoneNumber'
 import Input from '../Input'
 import { rubDeclension } from '../../../services/validation-input'
 import Button from '../Button';
-import { guid } from '../../../services/validation-input'
+import { guid, validatePopupInput } from '../../../services/validation-input'
 
 class PopUp extends Component {
   constructor(props) {
@@ -19,6 +19,7 @@ class PopUp extends Component {
     this.changeDeclension = this.changeDeclension.bind(this);
     this.addOrEditTransactions = this.addOrEditTransactions.bind(this);
     this.globalCloseHandler = this.globalCloseHandler.bind(this);
+    this.onInputsChange = this.onInputsChange.bind(this);
   }
   globalCloseHandler(event) {
     let key = event.keyCode || event.which;
@@ -42,8 +43,12 @@ class PopUp extends Component {
     this.setState({
       name: rubDeclension(+ event.target.value)
     });
+    this.onInputsChange()
   }
   addOrEditTransactions() {
+    if (!this.props.isValid) {
+      return
+    }
     let num = this.phoneInput.getNumber();
     let sum = this.inputSum.inputDOM.value;
     let id = this.props.id;
@@ -57,15 +62,21 @@ class PopUp extends Component {
     this.props.popUpActions.closePopup();
   }
 
+  onInputsChange() {
+    let num = this.phoneInput.getNumber();
+    let sum = this.inputSum.inputDOM.value;
+    this.props.popUpActions.validatePopup(validatePopupInput({num, sum}))
+  }
+
   render() {
     return (
       <div>
         {this.props.isOpened && (
           <div>
-            <PhoneNumber ref={(phoneInput) => this.phoneInput = phoneInput}  phoneNumber={this.props.phoneNumber}/>
+            <PhoneNumber ref={(phoneInput) => this.phoneInput = phoneInput}  phoneNumber={this.props.phoneNumber} onChange={this.onInputsChange}/>
             <Input ref={inputSum => this.inputSum = inputSum} maxLength={4} additionalKeyPress={this.setMaxValue} additionalKeyUp={this.changeDeclension} placeholder={0} defaultValue={this.props.paySum}/>
             <div>{this.state.name}</div>
-            <Button onClickHandler={this.addOrEditTransactions}>продолжить</Button>
+            <Button onClickHandler={this.addOrEditTransactions} inactive={!this.props.isValid}>продолжить</Button>
           </div>
         )}
       </div>

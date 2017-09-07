@@ -33,6 +33,7 @@ class PhoneNumber extends Component {
     } else if ((inputValue.length === 0) && (id !== 0) && (key === 8)) {
       this.inputs[--id].focusOnElement();
     }
+    this.props.onChange && this.props.onChange()
   }
   additionalKeyDown(event) {
     let key = event.keyCode || event.which;

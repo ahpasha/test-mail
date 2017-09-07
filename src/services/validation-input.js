@@ -40,3 +40,14 @@ export function guid() {
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
     s4() + '-' + s4() + s4() + s4();
 }
+
+export function validatePopupInput(object) {
+  let {num, sum} = object;
+  let result = true;
+
+  if (num.length < 10 || sum > 5000 || sum <= 0) {
+    result =  false
+  }
+
+  return result
+}

@@ -10,3 +10,10 @@ export function closePopup() {
     type: 'CLOSE_POPUP'
   }
 }
+
+export function validatePopup(isValid) {
+  return {
+    type: 'VALIDATE_POPUP',
+    payload: isValid
+  }
+}
