@@ -4,11 +4,14 @@ import { connect } from 'react-redux';
 import * as popupActions from '../../actions/popupActions';
 import * as listActions from '../../actions/TransectionsActions';
 import PopUp from '../presentational/PopUp';
+import AddOverlay from '../presentational/AddOverlay';
+
+const PopupWithOverLay = AddOverlay(PopUp);
 
 class PopupContainer extends Component {
   render() {
     return (
-      <PopUp {...this.props}/>
+      <PopupWithOverLay {...this.props}/>
     )
   }
 }
