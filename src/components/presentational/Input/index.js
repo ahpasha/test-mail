@@ -13,7 +13,7 @@ class Input extends Component {
     this.onPasteHandler = this.onPasteHandler.bind(this);
   }
   notAllowChars(event) {
-    if (!onlyNumbers(event) || this.inputDOM.value.length === this.props.maxLength) {
+    if (!onlyNumbers(event.keyCode || event.which) || this.inputDOM.value.length === this.props.maxLength) {
       event.preventDefault();
       event.stopPropagation();
     }
