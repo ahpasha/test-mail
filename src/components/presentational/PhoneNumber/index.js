@@ -30,18 +30,30 @@ class PhoneNumber extends Component {
   additionalKeyUp(event, id) {
     let inputValue = event.target.value;
     let key = event.keyCode || event.which;
-    if ((inputValue.length >= options[id].maxLength) && (id < options.length - 1) && (key !== 8)) {
-      this.inputs[++id].focusOnElement();
-      this.inputs[id].selectionStart = this.inputs[id].inputDOM.setSelectionRange(this.inputs[id].inputDOM.value.length, this.inputs[id].inputDOM.value.length);
-    } else if ((inputValue.length === 0) && (id !== 0) && (key === 8)) {
-      this.inputs[--id].focusOnElement();
-      this.inputs[id].selectionStart = this.inputs[id].inputDOM.setSelectionRange(this.inputs[id].inputDOM.value.length, this.inputs[id].inputDOM.value.length);
+    if (key === 37 || key === 39) {
+      event.preventDefault();
+      if ((key === 37) && (event.target.selectionStart === 0) && (id !== 0)) {
+        this.inputs[--id].focusOnElement();
+        this.inputs[id].inputDOM.setSelectionRange(this.inputs[id].inputDOM.value.length, this.inputs[id].inputDOM.value.length);
+      }
+      if ((key === 39) && (inputValue.length === event.target.selectionStart) && (id < options.length - 1)) {
+        this.inputs[++id].focusOnElement();
+        this.inputs[id].inputDOM.setSelectionRange(0, 0);
+      }
+    } else {
+      if ((inputValue.length >= options[id].maxLength) && (id < options.length - 1) && (key !== 8)) {
+        this.inputs[++id].focusOnElement();
+        this.inputs[id].inputDOM.setSelectionRange(this.inputs[id].inputDOM.value.length, this.inputs[id].inputDOM.value.length);
+      } else if ((inputValue.length === 0) && (id !== 0) && (key === 8)) {
+        this.inputs[--id].focusOnElement();
+        this.inputs[id].inputDOM.setSelectionRange(this.inputs[id].inputDOM.value.length, this.inputs[id].inputDOM.value.length);
+      }
     }
     this.props.onChange && this.props.onChange()
   }
   additionalKeyDown(event) {
     let key = event.keyCode || event.which;
-    if (key === 9) {
+    if (key === 9 || key === 38 || key === 40) {
       event.preventDefault();
       event.stopPropagation();
     }
