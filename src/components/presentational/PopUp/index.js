@@ -3,9 +3,8 @@ import CSSMobules from 'react-css-modules';
 import styles from './styles.styl';
 import PhoneNumber from '../PhoneNumber'
 import Input from '../Input'
-import { rubDeclension } from '../../../services/validation-input'
+import { rubDeclension, guid, validatePopupInput } from '../../../services/helpers'
 import Button from '../Button';
-import { guid, validatePopupInput } from '../../../services/validation-input'
 
 class PopUp extends Component {
   constructor(props) {

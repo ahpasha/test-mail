@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './styles.styl';
-import RefillCard from '../RefillCard'
+import RefillCard from '../TransactionsCard'
 import Button from '../Button';
 
 class RefillList extends Component {

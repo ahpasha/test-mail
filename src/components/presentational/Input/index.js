@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './styles.styl';
-import { onlyNumbers } from '../../../services/validation-input';
+import { onlyNumbers } from '../../../services/helpers';
 
 class Input extends Component {
   constructor() {

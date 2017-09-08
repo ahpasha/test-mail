@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import * as popupActions from '../../actions/popupActions';
-import * as listActions from '../../actions/TransectionsActions';
+import * as listActions from '../../actions/transactionsActions';
 import PopUp from '../presentational/PopUp';
 import AddOverlay from '../presentational/AddOverlay';
 
