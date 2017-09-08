@@ -1,2 +1,3 @@
 # test-mail
-test fot mail
+npm install
+npm run start
